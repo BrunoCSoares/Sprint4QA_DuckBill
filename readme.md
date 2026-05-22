@@ -1,147 +1,147 @@
-# [cite_start]FIAP - Análise e Desenvolvimento de Sistemas [cite: 140, 141]
-## [cite_start]Projeto DuckBill [cite: 142]
+# FIAP - Análise e Desenvolvimento de Sistemas
+## Projeto DuckBill
 
 **Autores:**
-* [cite_start]Bruno Carlos Soares RM - 559250 [cite: 143]
-* [cite_start]Lucas Borges de Souza RM - 560027 [cite: 144]
-* [cite_start]Pedro Henrique da Silva RM - 560393 [cite: 145]
+* Bruno Carlos Soares RM - 559250
+* Lucas Borges de Souza RM - 560027
+* Pedro Henrique da Silva RM - 560393
 
-[cite_start]**Documento Base De Testes - Sprint 4 (Duckbill)** [cite: 151]
-[cite_start]*Compliance, Quality Assurance & Tests* [cite: 152]
-[cite_start]*Trabalho apresentado como requisito parcial ao curso Análise e Desenvolvimento de Sistemas.* [cite: 153]
-[cite_start]*Challange 2º Ano - 2TDSPS* [cite: 146]
-[cite_start]*São Paulo 2026* [cite: 147]
-
----
-
-## [cite_start]Introdução e Metodologia de Testes [cite: 169]
-
-[cite_start]Este documento apresenta a estratégia de Quality Assurance (QA) e o planejamento de testes de validação aplicados ao projeto DuckBill durante a Sprint 4. O objetivo principal é garantir o compliance com os requisitos estipulados, validando tanto as regras de negócio essenciais quanto a estabilidade e responsividade da interface de usuário (UI). [cite: 170]
-[cite_start]Para garantir uma cobertura eficiente, a abordagem foi estruturada em duas frentes complementares: testes manuais de sistema e automação de testes de front-end. [cite: 171]
-
-### [cite_start]Configuração: Testes Manuais [cite: 172]
-[cite_start]A primeira etapa engloba os testes manuais (CT01 a CT03), que foram estruturados e gerenciados utilizando a plataforma Azure Boards. [cite: 173] [cite_start]A configuração foi realizada através da criação de um Test Plan específico para a Sprint 4, utilizando Requirement-based suites para vincular cada Caso de Teste diretamente aos Product Backlog Items (PBIs) correspondentes no Kanban. [cite: 174] [cite_start]Todos os cenários foram desenhados com dados de entrada controlados e saídas predefinidas, garantindo a rastreabilidade e a aferição precisa das funções de gestão financeira (transações e metas) e da integração com IA. [cite: 175]
-
-### [cite_start]Configuração: Testes Automatizados [cite: 176]
-[cite_start]A segunda etapa refere-se à automação de interface (CT04 a CT07), implementada através da ferramenta Katalon, utilizando a técnica de Record & Playback. [cite: 177] [cite_start]O ambiente de testes foi configurado para rodar a aplicação Web localmente (localhost). [cite: 178] [cite_start]Para contornar os desafios de sincronização de estado virtual comuns em aplicações modernas (como o React), os scripts foram ajustados tecnicamente com injeção de atrasos (pause) e simulação de eventos reais de teclado (runScript) para garantir a correta validação dos formulários e habilitação de botões. [cite: 179] [cite_start]A suíte automatizada abrange Smoke Tests de navegação, testes funcionais de comunicação com a IA e testes negativos de validação de formulários vazios, provando a robustez do sistema contra falhas de uso. [cite: 180]
+**Documento Base De Testes - Sprint 4 (Duckbill)**
+*Compliance, Quality Assurance & Tests*
+*Trabalho apresentado como requisito parcial ao curso de Análise e Desenvolvimento de Sistemas.*
+*Challenge 2º Ano - 2TDSPS*
+*São Paulo 2026*
 
 ---
 
-## [cite_start]1. Testes Manuais de Validação de Sistema [cite: 181]
-[cite_start]Estes testes serão cadastrados nos Work Items (Test Cases) do Azure DevOps, vinculados aos PBIs correspondentes. [cite: 182]
+## Introdução e Metodologia de Testes
 
-### 1.1. [cite_start]CT01: Registrar transação de saída e validar saldo (PBI: Manter Transações - Luizito) [cite: 183]
-* [cite_start]**Teste Planejado:** Validação do cálculo de saldo ao inserir uma nova despesa. [cite: 184]
-* [cite_start]**Dados de Entrada (Input):** [cite: 185]
-    * a. [cite_start]Tipo de despesa: Alimentação [cite: 186]
-    * b. [cite_start]Valor: R$ 36,00 [cite: 187]
-    * c. [cite_start]Descrição: McDonalds Big Mac [cite: 188]
-* [cite_start]**Dados de Saída (Output):** [cite: 189]
-    * a. [cite_start]O saldo total na tela de Carteira/Dashboard deve ser decrementado em exatamente R$ 36,00. [cite: 190]
-    * b. [cite_start]A transação "McDonalds Big Mac" deve aparecer no histórico. [cite: 191]
-* [cite_start]**Procedimento (Passos):** [cite: 192]
-    * a. [cite_start]Realizar login no aplicativo [cite: 193]
-    * b. [cite_start]Acessar a tela “Cofre” do aplicativo. [cite: 194]
-    * c. [cite_start]Clicar no botão para adicionar nova transação. [cite: 195]
-    * d. [cite_start]Preencher os dados de despesa(Alimentação, R$ 36,00, McDonalds Big Mac). [cite: 196]
-    * e. [cite_start]Clicar em "Salvar" e retornar à tela do Cofre e verificar o valor do Saldo Total e histórico. [cite: 197]
+Este documento apresenta a estratégia de Quality Assurance (QA) e o planeamento de testes de validação aplicados ao projeto DuckBill durante a Sprint 4. O objetivo principal é garantir o compliance com os requisitos estipulados, validando tanto as regras de negócio essenciais como a estabilidade e responsividade da interface de utilizador (UI).
+Para garantir uma cobertura eficiente, a abordagem foi estruturada em duas frentes complementares: testes manuais de sistema e automação de testes de front-end.
 
-### 1.2. [cite_start]CT02: Criar meta e validar progresso inicial (PBI: Manter Metas - Ambição Financeira) [cite: 198]
-* [cite_start]**Teste Planejado:** Validação da criação de uma meta e do cálculo da barra de progresso. [cite: 199]
-* [cite_start]**Dados de Entrada (Input):** [cite: 200]
-    * a. [cite_start]Nome da Meta: Notebook [cite: 201]
-    * b. [cite_start]Valor Total da Meta: R$ 2.000,00 [cite: 202]
-    * c. [cite_start]Valor do Depósito Inicial: R$ 500,00 [cite: 203]
-* [cite_start]**Dados de Saída (Output):** [cite: 204]
-    * a. [cite_start]A meta "Notebook" deve ser listada na tela. [cite: 205]
-    * b. [cite_start]A barra ou indicador de progresso deve exibir visualmente o percentual de 25% concluído. [cite: 206]
-* [cite_start]**Procedimento (Passos):** [cite: 207]
-    * a. [cite_start]Acessar a tela "Metas" no menu de navegação. [cite: 208]
-    * b. [cite_start]Clicar em "+" ao lado de “Minhas Metas”. [cite: 209]
-    * c. [cite_start]Inserir o Nome (Notebook) e Valor Total (R$ 2.000,00) e salvar. [cite: 210]
-    * d. [cite_start]Apertar em “Guardar Dinheiro” abaixo da meta referida e adicionar R$ 500,00. [cite: 211]
-    * e. [cite_start]Apertar em “Guardar Dinheiro” abaixo da meta referida e adicionar R$ 1500,00. [cite: 212]
+### Configuração: Testes Manuais
+A primeira etapa engloba os testes manuais (CT01 a CT03), que foram estruturados e geridos utilizando a plataforma Azure Boards. A configuração foi realizada através da criação de um Test Plan específico para a Sprint 4, utilizando Requirement-based suites para vincular cada Caso de Teste diretamente aos Product Backlog Items (PBIs) correspondentes no Kanban. Todos os cenários foram desenhados com dados de entrada controlados e saídas predefinidas, garantindo a rastreabilidade e a aferição precisa das funções de gestão financeira (transações e metas) e da integração com IA.
 
-### 1.3. [cite_start]CT03: Categorização Inteligente de Despesa (PBI: Integração IA - Adaptado) [cite: 213]
-* [cite_start]**Teste Planejado:** Validação do preenchimento automático do campo categoria ao digitar uma despesa conhecida. [cite: 214]
-* [cite_start]**Dados de Entrada (Input):** [cite: 215]
-    * a. [cite_start]Valor: R$ 50,00 [cite: 216]
-    * b. [cite_start]Descrição da transação: cinema [cite: 217]
-* [cite_start]**Dados de Saída (Output):** [cite: 218]
-    * a. [cite_start]O sistema deve sugerir a categoria Lazer. [cite: 219]
-* [cite_start]**Procedimento (Passos):** [cite: 220]
-    * a. [cite_start]Acessar a tela de Cofre. [cite: 221]
-    * b. [cite_start]Clicar em "+" para cadastrar uma nova despesa. [cite: 222]
-    * c. [cite_start]Inserir o valor de R$ 50,00 e a descrição de “cinema” [cite: 223]
-    * d. [cite_start]Clicar em “aceitar” na categoria sugerida. [cite: 224]
+### Configuração: Testes Automatizados
+A segunda etapa refere-se à automação de interface (CT04 a CT07), implementada através da ferramenta Katalon, utilizando a técnica de Record & Playback. O ambiente de testes foi configurado para correr a aplicação Web localmente (localhost). Para contornar os desafios de sincronização de estado virtual comuns em aplicações modernas (como o React), os scripts foram ajustados tecnicamente com injeção de atrasos (pause) e simulação de eventos reais de teclado (runScript) para garantir a correta validação dos formulários e habilitação de botões. A suíte automatizada abrange Smoke Tests de navegação, testes funcionais de comunicação com a IA e testes negativos de validação de formulários vazios, provando a robustez do sistema contra falhas de uso.
 
 ---
 
-## [cite_start]2. Testes Automatizados de Validação de Interface [cite: 225]
+## 1. Testes Manuais de Validação de Sistema
+Estes testes serão registados nos Work Items (Test Cases) do Azure DevOps, vinculados aos PBIs correspondentes.
 
-### 2.1. [cite_start]CT04: Interação com Chatbot e Validação de Retorno (Teste Funcional) [cite: 226]
-[cite_start]Validação da comunicação entre o front-end e o serviço de IA, garantindo que o envio de um prompt gera um retorno na interface. [cite: 227]
-* [cite_start]**Dados de Entrada (Input):** [cite: 228]
-    * a. [cite_start]Clique no botão de "Pergunta Sugerida". [cite: 229]
-* [cite_start]**Dados de Saída (Output):** [cite: 230]
-    * a. [cite_start]O sistema deve processar a requisição e renderizar um novo componente de mensagem (balão de resposta do bot) na tela de chat. [cite: 231]
-* [cite_start]**Procedimento (Passos):** [cite: 232]
-    * a. [cite_start]Com o usuário já logado, acessar a tela do Chatbot / DuckBill AI. [cite: 233]
-    * b. [cite_start]Identificar e clicar em uma das opções de perguntas rápidas sugeridas na tela. [cite: 234]
-    * c. [cite_start]Aguardar o tempo de processamento da IA. [cite: 235]
-    * d. [cite_start]Validar se um novo balão de mensagem com a resposta da IA foi adicionado ao histórico do chat. [cite: 236]
+### 1.1. CT01: Registar transação de saída e validar saldo (PBI: Manter Transações - Luizito)
+* **Teste Planeado:** Validação do cálculo de saldo ao inserir uma nova despesa.
+* **Dados de Entrada (Input):**
+    * a. Tipo de despesa: Alimentação
+    * b. Valor: R$ 36,00
+    * c. Descrição: McDonalds Big Mac
+* **Dados de Saída (Output):**
+    * a. O saldo total na janela de Carteira/Dashboard deve ser decrementado em exatamente R$ 36,00.
+    * b. A transação "McDonalds Big Mac" deve aparecer no histórico.
+* **Procedimento (Passos):**
+    * a. Realizar login na aplicação.
+    * b. Aceder à janela “Cofre” da aplicação.
+    * c. Clicar no botão para adicionar nova transação.
+    * d. Preencher os dados de despesa (Alimentação, R$ 36,00, McDonalds Big Mac).
+    * e. Clicar em "Salvar", regressar à janela do Cofre e verificar o valor do Saldo Total e histórico.
 
-### 2.2. [cite_start]CT05: Teste de Navegação Completa pelo Menu (SmokeTest) [cite: 237]
-[cite_start]Validação do roteamento (routing) contínuo entre todas as páginas principais do aplicativo através do menu de navegação. [cite: 238]
-* [cite_start]**Dados de Entrada (Input):** [cite: 239]
-    * a. [cite_start]Cliques sequenciais nos botões de navegação do menu (ex: "Metas", "Transações/Cofre", "Perfil/Configurações"). [cite: 240]
-* [cite_start]**Dados de Saída (Output):** [cite: 241]
-    * a. [cite_start]O sistema deve redirecionar o usuário para todas as rotas solicitadas em sequência, sem apresentar erros (telas em branco ou quebra de layout). [cite: 242]
-    * b. [cite_start]Os títulos/elementos principais de cada uma das telas acessadas devem ser renderizados corretamente. [cite: 243]
-* [cite_start]**Procedimento (Passos):** [cite: 244]
-    * a. [cite_start]Clicar no botão do “Cofre” no menu de navegação e verificar o carregamento da tela. [cite: 245]
-    * b. [cite_start]Clicar no botão de “ìnpicio” no menu para voltar à tela inicial. [cite: 246]
-    * c. [cite_start]Clicar no botão de “Metas” no menu e verificar o carregamento. [cite: 247]
-    * d. [cite_start]Clicar no botão de “ìnpicio” no menu para voltar à tela inicial. [cite: 248]
-    * e. [cite_start]Clicar no botão do “Mapa” no menu e verificar o carregamento. [cite: 249]
-    * f. [cite_start]Clicar no botão de “ìnpicio” no menu para voltar à tela inicial. [cite: 250]
-    * g. [cite_start]Clicar no botão de “Perfil” no menu e verificar o carregamento. [cite: 251]
-    * h. [cite_start]Clicar no botão de “ìnpicio” no menu para voltar à tela inicial. [cite: 252]
+### 1.2. CT02: Criar meta e validar progresso inicial (PBI: Manter Metas - Ambição Financeira)
+* **Teste Planeado:** Validação da criação de uma meta e do cálculo da barra de progresso.
+* **Dados de Entrada (Input):**
+    * a. Nome da Meta: Notebook
+    * b. Valor Total da Meta: R$ 2.000,00
+    * c. Valor do Depósito Inicial: R$ 500,00
+* **Dados de Saída (Output):**
+    * a. A meta "Notebook" deve ser listada no ecrã.
+    * b. A barra ou indicador de progresso deve exibir visualmente a percentagem de 25% concluído.
+* **Procedimento (Passos):**
+    * a. Aceder à janela "Metas" no menu de navegação.
+    * b. Clicar em "+" ao lado de “Minhas Metas”.
+    * c. Inserir o Nome (Notebook) e Valor Total (R$ 2.000,00) e guardar.
+    * d. Carregar em “Guardar Dinheiro” abaixo da meta referida e adicionar R$ 500,00.
+    * e. Carregar em “Guardar Dinheiro” abaixo da meta referida e adicionar R$ 1500,00.
 
-### 2.3. [cite_start]CT06: Teste de Segurança: Controle de Acesso (Login/Logout) [cite: 253]
-[cite_start]Validação da segurança de acesso à aplicação, garantindo que o sistema autentique usuários válidos e encerre completamente a sessão ativa após o logout. [cite: 254]
-* [cite_start]**Dados de Entrada (Input):** [cite: 255]
-    * a. [cite_start]E-mail: 'bruno@gmail.com' [cite: 256]
-    * b. [cite_start]Senha: '123123' [cite: 257]
-    * c. [cite_start]Ação do usuário: Clique no botão "Sair / Log Out". [cite: 258]
-* [cite_start]**Dados de Saída (Output):** [cite: 259]
-    * a. [cite_start]No Login: O sistema deve validar as credenciais, gerar o token de sessão e redirecionar o usuário para a rota privada da Dashboard. [cite: 260]
-    * b. [cite_start]No Logout: O sistema deve destruir o token de sessão, limpar os dados do local storage/cookies e redirecionar o usuário de volta para a tela pública de Login, bloqueando qualquer tentativa de retrocesso de página. [cite: 261]
-* [cite_start]**Procedimento (Passos):** [cite: 262]
-    * a. [cite_start]Abrir o navegador e acessar a URL da tela de login do aplicativo. [cite: 263]
-    * b. [cite_start]Preencher os campos de credenciais com os dados de entrada controlados (E-mail e Senha). [cite: 264]
-    * c. [cite_start]Clicar no botão "Entrar" e validar o redirecionamento com sucesso para a Dashboard interna. [cite: 265]
-    * d. [cite_start]Localizar no menu de navegação e clicar no botão correspondente a "Sair" (Logout). [cite: 266]
-    * e. [cite_start]Aguardar o redirecionamento automático para a página inicial de login. [cite: 267]
-
-### 2.4. [cite_start]CT07: Bloqueio de Formulário Vazio na Compra de Ativos (Teste Negativo) [cite: 268]
-[cite_start]Validação da consistência do front-end ao impedir o envio de um formulário com campos obrigatórios em branco na tela de Mapa. [cite: 269]
-* [cite_start]**Dados de Entrada (Input):** [cite: 270]
-    * a. [cite_start]Submissão do formulário de "Nova Compra de Ativo" sem inserir dados em nenhum dos campos (Nome, Valor, Quantidade, etc. mantidos vazios). [cite: 271]
-* [cite_start]**Dados de Saída (Output):** [cite: 272]
-    * a. [cite_start]O sistema não deve registrar a transação nem fechar a tela. [cite: 273]
-* [cite_start]**Procedimento (Passos):** [cite: 274]
-    * a. [cite_start]Com o usuário já logado, acessar a tela "Mapa" através do menu de navegação. [cite: 275]
-    * b. [cite_start]Clicar no botão ou opção para iniciar o registro de uma "Nova Compra de Ativo". [cite: 276]
-    * c. [cite_start]Manter todos os campos de entrada de dados totalmente em branco. [cite: 277]
-    * d. [cite_start]Clicar no botão de confirmar/salvar a compra. [cite: 278]
-    * e. [cite_start]Validar se a ação foi bloqueada. [cite: 279]
+### 1.3. CT03: Categorização Inteligente de Despesa (PBI: Integração IA - Adaptado)
+* **Teste Planeado:** Validação do preenchimento automático do campo categoria ao digitar uma despesa conhecida.
+* **Dados de Entrada (Input):**
+    * a. Valor: R$ 50,00
+    * b. Descrição da transação: cinema
+* **Dados de Saída (Output):**
+    * a. O sistema deve sugerir a categoria Lazer.
+* **Procedimento (Passos):**
+    * a. Aceder à janela de Cofre.
+    * b. Clicar em "+" para registar uma nova despesa.
+    * c. Inserir o valor de R$ 50,00 e a descrição “cinema”.
+    * d. Clicar em “aceitar” na categoria sugerida.
 
 ---
 
-## [cite_start]3. Anexos [cite: 280]
-* [cite_start]**Link Azure Boards (CT01; CT02; CT03):** https://dev.azure.com/RM559250/DuckBill [cite: 281]
-* [cite_start]**Vídeo: teste automatizado CT04:** https://youtu.be/UhhfHP9aPIs [cite: 282]
-* [cite_start]**Vídeo: teste automatizado CT05:** https://youtu.be/2oxwsTnKEmg [cite: 283]
-* [cite_start]**Vídeo: teste automatizado CT06:** https://youtu.be/nqKj0lAWkks [cite: 284]
-* [cite_start]**Vídeo: teste automatizado CT07:** https://youtu.be/yStdf12Nj74 [cite: 285]
+## 2. Testes Automatizados de Validação de Interface
+
+### 2.1. CT04: Interação com Chatbot e Validação de Retorno (Teste Funcional)
+Validação da comunicação entre o front-end e o serviço de IA, garantindo que o envio de um prompt gera um retorno na interface.
+* **Dados de Entrada (Input):**
+    * a. Clique no botão de "Pergunta Sugerida".
+* **Dados de Saída (Output):**
+    * a. O sistema deve processar a requisição e renderizar um novo componente de mensagem (balão de resposta do bot) na janela de chat.
+* **Procedimento (Passos):**
+    * a. Com o utilizador já logado, aceder à janela do Chatbot / DuckBill AI.
+    * b. Identificar e clicar numa das opções de perguntas rápidas sugeridas no ecrã.
+    * c. Aguardar o tempo de processamento da IA.
+    * d. Validar se um novo balão de mensagem com a resposta da IA foi adicionado ao histórico do chat.
+
+### 2.2. CT05: Teste de Navegação Completa pelo Menu (SmokeTest)
+Validação do roteamento (routing) contínuo entre todas as páginas principais da aplicação através do menu de navegação.
+* **Dados de Entrada (Input):**
+    * a. Cliques sequenciais nos botões de navegação do menu (ex: "Metas", "Transações/Cofre", "Perfil/Configurações").
+* **Dados de Saída (Output):**
+    * a. O sistema deve redirecionar o utilizador para todas as rotas solicitadas em sequência, sem apresentar erros (ecrãs em branco ou quebra de layout).
+    * b. Os títulos/elementos principais de cada uma das janelas acedidas devem ser renderizados corretamente.
+* **Procedimento (Passos):**
+    * a. Clicar no botão do “Cofre” no menu de navegação e verificar o carregamento do ecrã.
+    * b. Clicar no botão de “Início” no menu para voltar ao ecrã inicial.
+    * c. Clicar no botão de “Metas” no menu e verificar o carregamento.
+    * d. Clicar no botão de “Início” no menu para voltar ao ecrã inicial.
+    * e. Clicar no botão do “Mapa” no menu e verificar o carregamento.
+    * f. Clicar no botão de “Início” no menu para voltar ao ecrã inicial.
+    * g. Clicar no botão de “Perfil” no menu e verificar o carregamento.
+    * h. Clicar no botão de “Início” no menu para voltar ao ecrã inicial.
+
+### 2.3. CT06: Teste de Segurança: Controlo de Acesso (Login/Logout)
+Validação da segurança de acesso à aplicação, garantindo que o sistema autentica utilizadores válidos e encerra completamente a sessão ativa após o logout.
+* **Dados de Entrada (Input):**
+    * a. E-mail: 'bruno@gmail.com'
+    * b. Palavra-passe (Senha): '123123'
+    * c. Ação do utilizador: Clique no botão "Sair / Log Out".
+* **Dados de Saída (Output):**
+    * a. No Login: O sistema deve validar as credenciais, gerar o token de sessão e redirecionar o utilizador para a rota privada da Dashboard.
+    * b. No Logout: O sistema deve destruir o token de sessão, limpar os dados do local storage/cookies e redirecionar o utilizador de volta para o ecrã público de Login, bloqueando qualquer tentativa de retrocesso de página.
+* **Procedimento (Passos):**
+    * a. Abrir o navegador e aceder ao URL do ecrã de login da aplicação.
+    * b. Preencher os campos de credenciais com os dados de entrada controlados (E-mail e Palavra-passe).
+    * c. Clicar no botão "Entrar" e validar o redirecionamento com sucesso para a Dashboard interna.
+    * d. Localizar no menu de navegação e clicar no botão correspondente a "Sair" (Logout).
+    * e. Aguardar o redirecionamento automático para a página inicial de login.
+
+### 2.4. CT07: Bloqueio de Formulário Vazio na Compra de Ativos (Teste Negativo)
+Validação da consistência do front-end ao impedir o envio de um formulário com campos obrigatórios em branco na janela de Mapa.
+* **Dados de Entrada (Input):**
+    * a. Submissão do formulário de "Nova Compra de Ativo" sem inserir dados em nenhum dos campos (Nome, Valor, Quantidade, etc. mantidos vazios).
+* **Dados de Saída (Output):**
+    * a. O sistema não deve registar a transação nem fechar a janela.
+* **Procedimento (Passos):**
+    * a. Com o utilizador já logado, aceder ao ecrã "Mapa" através do menu de navegação.
+    * b. Clicar no botão ou opção para iniciar o registo de uma "Nova Compra de Ativo".
+    * c. Manter todos os campos de entrada de dados totalmente em branco.
+    * d. Clicar no botão de confirmar/guardar a compra.
+    * e. Validar se a ação foi bloqueada.
+
+---
+
+## 3. Anexos
+* **Link Azure Boards (CT01; CT02; CT03):** https://dev.azure.com/RM559250/DuckBill
+* **Vídeo: teste automatizado CT04:** https://youtu.be/UhhfHP9aPIs
+* **Vídeo: teste automatizado CT05:** https://youtu.be/2oxwsTnKEmg
+* **Vídeo: teste automatizado CT06:** https://youtu.be/nqKj0lAWkks
+* **Vídeo: teste automatizado CT07:** https://youtu.be/yStdf12Nj74
